@@ -1,10 +1,5 @@
 @import 'edit/normalize';
 
-@import 'edit/settings';
-@import 'edit/global';
-@import 'edit/typography';
-@import 'edit/header';
-
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
@@ -15,3 +10,8 @@
 @import "bootstrap/navbar";
 @import "bootstrap/utilities/api";
 
+@import 'edit/settings';
+@import 'edit/global';
+@import 'edit/typography';
+@import 'edit/header';
+@import 'edit/gallery';
