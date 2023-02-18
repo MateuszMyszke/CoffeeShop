@@ -5,7 +5,6 @@
   background-color: $color-dark;
   z-index: 0;
 }
-
 @mixin section-background-absolute {
   position: absolute;
   opacity: 0.4;
@@ -14,31 +13,27 @@
   object-fit: cover;
   z-index: -1;
 }
-
 @mixin container-settings {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 @mixin section-title {
   text-align: center;
   position: relative;
   color: $color-main;
   letter-spacing: 5px;    
 }
-
 @mixin title-bar {
   position: absolute;
   content: '';
   left: 50%;
   width: 40vw;
-  height: 5px;
+  height: 7px;
   transform: translateX(-50%);
-  margin-top: 40px;
+  margin-top: 87px;
   background: $color-main; 
 }
-
 @mixin title-bar-section {
   position: absolute;
   content: "";
@@ -48,7 +43,6 @@
   transform: translate(-110%, 120%);
   background: #bea67c;
 }
-
 @mixin icon-most-popular {
   position: absolute;
   display: block;
@@ -59,7 +53,6 @@
   height: 120px;
   transform: translate(110%, 20%);
 }
-
 @mixin button {
   display: inline-block;
   background-color: transparent;
@@ -84,4 +77,23 @@
     height: 50px;
     width: 50px;
   }
+}
+
+@mixin form-button {
+  display: inline-block;
+  min-width: 160px;
+  margin: 24px auto 0 auto;
+  padding: 16px;
+  border-radius: 0;
+  font-family: $font-text;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: $font-semibold;
+  letter-spacing: 5px;
+  color: $color-light;
+  cursor: pointer;
+  border: 2px solid $color-main;
+  background-color: $color-main;
 }

@@ -1,19 +1,18 @@
 export const select = {
   templateOf: {
     product: '#template-product',
+    contact: '#template-contact',
   },
-
   containerOf: {
     pages: '#pages',
     productsGalleryHome: '#home__gallery > .container',
+    productsGalleryProducts: '#products__gallery > .container',
     products: '#products',
     contact: '#contact',
   },
-
   all: {
     homeProducts: '#home > .product__wrapper',
   },
-
   product: {
     wrapper: '.product__wrapper',
     name: '.product__name',
@@ -22,9 +21,21 @@ export const select = {
     intensity: '.product__intensity',
     image: '.product__image',
   },
-
+  contact: {
+    submitContact: '.contact__form',
+    name: '[name="name"]',
+    title: '[name="title"]',
+    text: '[name="message"]',
+  },
   nav: {
     links: '.nav__wrapper a',
+  },
+  section: {
+    home: 'home',
+    products: 'products',
+  },
+  button: {
+    discover: 'discover',
   },
 };
 
@@ -44,7 +55,6 @@ export const settings = {
     defaultMin: 1,
     defaultMax: 10,
   },
-
   db: {
     url:
       '//' +
@@ -52,10 +62,16 @@ export const settings = {
       (window.location.hostname == 'localhost' ? ':3131' : ''),
     products: 'products',
     product: 'product',
+    contacts: 'contacts',
+    contact: 'contact',
   },
 };
 
 export const templates = {
   product: Handlebars.compile(
-    document.querySelector(select.templateOf.product).innerHTML),
+    document.querySelector(select.templateOf.product).innerHTML
+  ),
+  contact: Handlebars.compile(
+    document.querySelector(select.templateOf.contact).innerHTML
+  ),
 };

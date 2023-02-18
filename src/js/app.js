@@ -1,25 +1,113 @@
 import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
+import Contact from './components/Contact.js';
 
 const app = {
+  initPages: function () {
+    const thisApp = this;
+
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);
+
+    const idFromHash = window.location.hash.replace('#/', '');
+
+    let pageMatchingHash = thisApp.pages[0].id;
+
+    for (let page of thisApp.pages) {
+      if (page.id == idFromHash) {
+        pageMatchingHash = page.id;
+        break;
+      }
+    }
+
+    thisApp.activatePage(pageMatchingHash);
+
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(id);
+
+        window.location.hash = '#/' + id;
+      });
+    }
+
+    thisApp.initButtons();
+  },
+
+  activatePage: function (pageId) {
+    const thisApp = this;
+
+    for (let page of thisApp.pages) {
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+    }
+
+    for (let link of thisApp.navLinks) {
+      link.classList.toggle(
+        classNames.pages.active,
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
+  },
+
+  initButtons: function () {
+    const discoverButton = document.getElementById(select.button.discover);
+
+    discoverButton.addEventListener('click', function (event) {
+      let idFromHash = window.location.hash.replace('#/', '');
+
+      let clickedElement = document.getElementById(idFromHash);
+
+      if (clickedElement == null) {
+        clickedElement = document.getElementById(select.section.home);
+      }
+
+      event.preventDefault();
+
+      clickedElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  },
+
   initData: function () {
     const thisApp = this;
+
     const url = settings.db.url + '/' + settings.db.products;
+
     thisApp.data = {};
+
     fetch(url)
       .then((rawResponse) => {
         return rawResponse.json();
       })
       .then((parsedResponse) => {
         this.data.products = parsedResponse;
+
         thisApp.initGallery();
       });
   },
 
+  initContact: function () {
+    const thisApp = this;
+
+    thisApp.contactContainer = document.querySelector(
+      select.containerOf.contact
+    );
+
+    thisApp.contact = new Contact(thisApp.contactContainer);
+  },
 
   init: function () {
     const thisApp = this;
+
+    thisApp.initPages();
     thisApp.initData();
+    thisApp.initContact();
   },
 
   initGallery: function () {
@@ -67,4 +155,5 @@ const app = {
     }
   },
 };
+
 app.init();

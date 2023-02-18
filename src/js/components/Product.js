@@ -1,10 +1,13 @@
 import { templates, select } from '../settings.js';
 import utils from '../utils.js';
+
 class Product {
   constructor(id, data) {
     const thisProduct = this;
+
     thisProduct.id = id;
     thisProduct.data = data;
+
     thisProduct.renderInHome();
     thisProduct.renderInProducts();
     thisProduct.getElements();
@@ -26,8 +29,10 @@ class Product {
     const homeGalleryContainer = document.querySelector(
       select.containerOf.productsGalleryHome
     );
+
     homeGalleryContainer.appendChild(thisProduct.element);
   }
+
   renderInProducts() {
     const thisProduct = this;
 
@@ -36,11 +41,15 @@ class Product {
     const productsGalleryContainer = document.querySelector(
       select.containerOf.productsGalleryProducts
     );
+
     productsGalleryContainer.appendChild(thisProduct.element);
   }
+
   getElements() {
     const thisProduct = this;
+
     thisProduct.dom = {};
+
     thisProduct.dom.wrapper = thisProduct.element.querySelector(
       select.product.wrapper
     );
@@ -61,4 +70,5 @@ class Product {
     );
   }
 }
+
 export default Product;

@@ -85,9 +85,11 @@
     </section>
 
   </div>
+
   <footer class="footer">
     <p>© 2023 EL TIGRE inc.</p>
   </footer>
+
   <script id="template-product" type="text/x-handlebars-template">
     <div class="product__wrapper">
       <div class="product__header col-md-6">
@@ -101,7 +103,28 @@
       </div>
     </div>
   </script>
+
+  <script id="template-contact" type="text/x-handlebars-template">
+    <div class="container">
+      <h2 class="section__title">Contact Us</h2>
+      <div class="row">
+        <form class="contact__form col col-lg-5">
+          <label for="name">Name</label>
+          <br>
+          <input type="text" name="name" id="form__name">
+          <label for="title">Title</label>
+          <br>
+          <input type="text" name="title" id="form__title">
+          <label for="message">Message</label>
+          <br>
+          <textarea type="text" name="message" rows="6" cols="4"></textarea>
+          <button class="btn btn-two" type="submit" id="contactSubmit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="./vendor/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js" type="module"></script>
 </body>
 </html>
