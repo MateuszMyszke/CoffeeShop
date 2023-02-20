@@ -84,12 +84,12 @@ const app = {
     fetch(url)
       .then((rawResponse) => {
         return rawResponse.json();
-      })
+      }).catch(err => {alert(`Error: ${err}`);})
       .then((parsedResponse) => {
         this.data.products = parsedResponse;
 
         thisApp.initGallery();
-      });
+      }).catch(err => {alert(`Error: ${err}`);});
   },
 
   initContact: function () {

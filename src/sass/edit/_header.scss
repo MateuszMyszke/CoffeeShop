@@ -1,6 +1,5 @@
 .header {
   @include section-background-relative;
-
   &__background {
     @include section-background-absolute;
   }
@@ -15,7 +14,6 @@
 
 .row {
   align-items: center;
-
   &__title {
     flex: 2;
   }
@@ -23,30 +21,28 @@
 
 .title__wrapper {
   text-align: center;
+  
 
   h1 {
     color: $color-main;
     margin: 0;
     line-height: 1.1;
     letter-spacing: 14px;
-
     &:first-child {
       text-align: left;
+      padding-left: 280px;
     }
   }
-
   &::after{
     @include title-bar;
     width: 20vw;
     margin-top: 34px;
   }
 }
-
 .button__wrapper {
   display: flex;
   justify-content: center;
 }
-
 .btn-one {
   @include button;
 }
